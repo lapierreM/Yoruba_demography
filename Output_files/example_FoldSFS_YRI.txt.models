@@ -1,0 +1,3 @@
+#SFS	Kgm     	BirthDeath(t)      	LinearKingman(t)      	CondKingman(t)      	FoundedKingman(t)      	ExponentialKingman(t)
+FoldSFS_YRI.txt	2.30e-02	2.16e-04 (t=1.14)	3.00e-04 (t=2.48)	2.31e-04 (t=1.89)	3.39e-04 (t=1.36)	4.08e-04 (t=0.56)
+.	.	.	9.998528	10.291193	10.373746	9.887204
