@@ -10,19 +10,19 @@ This folder contains the programs to reproduce the results found in Lapierre et 
 
 * output: 3 files (file names take the observed SFS file name (given in the parameter file) and add a specific extension)
   * `.fit`: contains the least square distance d between the observed SFS and the simulated SFS under each model, for each tested value of the parameter t
-   first column: parameter t value
-   columns 2 to 6 : d value for the models Birth-Death ; Linear ; Conditioned ; Sudden ; Exponential
-   Columns are separated with a single space, the first line gives the columns legend.
+   first column: parameter t value  
+   columns 2 to 6 : d value for the models Birth-Death ; Linear ; Conditioned ; Sudden ; Exponential  
+   Columns are separated with a single space, the first line gives the columns legend.  
 
   * `.models`: contains the minimum least square distance d found for each model, with the parameter value t for which this minimal distance was found, and the sum of the optimized SFS for Kingman derived models
-   first line: column legend
-   second line: minimal d value (parameter t value for which this minimal d was found)
-   third line: mean sum of the optimized SFS for the Kingman derived models (all but Birth-Death)
+   first line: column legend  
+   second line: minimal d value (parameter t value for which this minimal d was found)  
+   third line: mean sum of the optimized SFS for the Kingman derived models (all but Birth-Death)  
    Columns are separated with tabulations.
 
   * `.bestfit`: contains the normalized observed SFS and simulated SFS for the parameter value minimizing the least square distance d (bestfit SFS under each model).
-   first line: column legend
-   following lines: normalized folded SFS value for each bin i (first column)
+   first line: column legend  
+   following lines: normalized folded SFS value for each bin i (first column)  
    Columns are separated with a single space.
 
 ***
