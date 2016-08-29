@@ -84,3 +84,21 @@ This folder contains the programs to reproduce the results found in Lapierre et 
 * takes in argument the parameter file containing all necessary parameter values to run the program (see this file for information on the necessary parameters)
 
 * output: plot in eps format
+
+***
+
+`Linear_fitting.py`: fitting a SFS under the Linear growth model, simulated with the topology simulation method.
+
+* command line: `python Linear_fitting.py l n t r e s`
+
+* arguments of the command line:
+  * `l` is the number of loci for the topology simulation of the SFS that will be fitted
+  * `n` is the sample size
+  * `t` is the foundation time of linear growth
+  * `r` is the number of replicates for the SFS simulations during the fitting
+  * `e` is the epsilon value for the Newton-Raphson optimization method
+  * `s` is the stop threashhold for the optimization
+
+* output: prints in the terminal the parameter values, normalized SFS simulated and step values of the optimization (see `Output_files/example_LinearSFS_fitting.txt` for an example)
+
+
