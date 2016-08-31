@@ -3,6 +3,9 @@ This folder contains data necessary for the study.
 - `FoldSFS_YRI_CDS.txt`: same for only the coding parts of the genome
 - `FoldSFS_YRI_notCDS.txt`: same for only the non-coding parts of the genome
 - `YRI_start2_200files_summary`: output summary of the stairway plot method (Liu and Fu 2015), for the Yoruba population, ignoring the singletons (start 2), dividing the total genome length by 10 to decrease computation time, summary of 200 bootstraps on the unfolded Yoruba SFS.
-- `Linear_1000_200files_summary` : output summary of the stairway plot method for SFS simulated under linear growth (time of foundation = 2.48), dividing the total genome length by 10 to decrease computation time, summary of 200 unfolded SFS simulated with the topoloty reconstruction method with 1000 loci.
-- `Linear_10000_200files_summary` : same with 10000 loci for the SFS simulations
-- `Linear_100000_200files_summary` : same with 100000 loci for the SFS simulations
+- `Linear_1000_200files_summary`: output summary of the stairway plot method for SFS simulated under linear growth (time of foundation = 2.48), dividing the total genome length by 10 to decrease computation time, summary of 200 unfolded SFS simulated with the topoloty reconstruction method with 1000 loci.
+- `Linear_10000_200files_summary`: same with 10000 loci for the SFS simulations
+- `Linear_100000_200files_summary`: same with 100000 loci for the SFS simulations
+- `mean_linearSFS_1000`: mean of 200 SFS simulated under the linear growth model (time of foundation = 2.48) with 1000 loci
+- `mean_linearSFS_10000`: same with 10000 loci for the SFS simulations
+- `mean_linearSFS_100000`: same with 100000 loci for the SFS simulations

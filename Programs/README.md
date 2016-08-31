@@ -77,7 +77,7 @@ This folder contains the programs to reproduce the results found in Lapierre et 
 
 ***
 
-`plot_Stairway.py`: plot the output summary of the Stairway plot method applied to the Yoruba SFS. (Figure S2)
+`plot_Stairway.py`: plot the output summary of the Stairway plot method applied to the Yoruba SFS. (Figure 4)
 
 * command line: `python plot_Stairway.py plot_Stairway_parameters.py`
 
@@ -100,5 +100,25 @@ This folder contains the programs to reproduce the results found in Lapierre et 
   * `s` is the stop threashhold for the optimization
 
 * output: prints in the terminal the parameter values, normalized SFS simulated and step values of the optimization (see `Output_files/example_LinearSFS_fitting.txt` for an example)
+
+***
+
+`plot_linearSFS.py`: plot the SFS simulated under the Linear growth model, with different number of loci. (Figure 5A)
+
+* command line: `python plot_linearSFS.py plot_linearSFS_parameters.py`
+
+* takes in argument the parameter file containing all necessary parameter values to run the program (see this file for information on the necessary parameters)
+
+* output: plot in eps format
+
+***
+
+`plot_Stairway_linear.py`: plot the output summary of the Stairway plot method applied to SFS simulated under the linear growth model with different number of loci. (Figure 5B)
+
+* command line: `python plot_Stairway_linear.py plot_Stairway_linear_parameters.py`
+
+* takes in argument the parameter file containing all necessary parameter values to run the program (see this file for information on the necessary parameters)
+
+* output: plot in eps format
 
 
