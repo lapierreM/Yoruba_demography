@@ -37,6 +37,16 @@ This folder contains the programs to reproduce the results found in Lapierre et 
 
 ***
 
+`BD_trajectory.py`: simulating a fixation trajectory for the critical Birth-Death model, with the optimized parameter t value
+
+* command line: `python BD_trajectory.py BD_trajectory_parameters.py`
+
+* takes in argument the parameter file containing all necessary parameter values to run the program (see this file for information on the necessary parameters)
+
+* output: `BD_trajectory.txt` containing the mean trajectory. First column gives time and second columns gives the mean frequency of the allele.
+
+***
+
 `plot_SFS_fitting.py`: plot the fitting of the five models, i.e. the least square distance d as a function of the parameter t value. (Figure 2A)
 
 * command line: `python plot_SFS_fitting.py plot_SFS_fitting_parameters.py`
