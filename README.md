@@ -1,6 +1,6 @@
 # Yoruba_demography
 
-This folder countains the data and programs necessary for the study of the Yoruba population demography, either with a model-constrained method or with a model-free method, the Stairway plot (Liu and Fu 2015).
+This folder contains the data and programs necessary for the study of the Yoruba population demography, either with a model-constrained method or with a model-free method, the Stairway plot (Liu and Fu 2015).
 
 - `Data`: Data (Site Frequency Spectrum, Stairway plot outputs) necessary for the study
 - `Output`: Examples of output files for the programs
