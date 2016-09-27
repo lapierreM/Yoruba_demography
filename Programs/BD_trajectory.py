@@ -21,11 +21,10 @@
 	for more information, please contact: marguerite.lapierre@mnhn.fr
 """
 
-import sys
-import numpy
-import math
+import numpy,math
+from matplotlib import pyplot as plt
+from numpy import random
 import re
-
 
 #------------------------------------------------------------------------------------------------
 # Main
@@ -41,6 +40,9 @@ with open(sys.argv[1],"r") as file_params:
 			
 		if list[0][:8]=='nb_simul':
 			nb_simul=int(list[1])
+		
+		elif list[0][:1]=='n':
+			n=int(list[1])
 			
 		elif list[0][:2]=='x0':
 			x0=float(list[1])
@@ -53,43 +55,36 @@ with open(sys.argv[1],"r") as file_params:
 	
 		elif list[0][:4]=='path':
 			path=re.sub(r'"','',(str(list[1][:-1]).strip()))
-			
-#
-#Trajectory simulation
-#
 
-tps_fix_WF=[]
+traj_BD=[]
 t_label=[]
-traj_WF=[]
 
-while len(tps_fix_WF)<nb_simul:
+while len(traj_BD)<nb_simul:
+	
+	#Initialization
 	x=x0
 	tabx=[]
 	t=0
-	tps=[]
 	
-	while x>0 and x<1:
+	while x>0 and t<tau:
 		tabx.append(x)
-		x+=numpy.random.normal((1-x)*dt, math.sqrt(x*(1-x)*dt)) #Wright-Fisher diffusion
+		x+=numpy.random.normal(2*dt, math.sqrt(2*x*dt))
 		t+=dt
-		tps.append(t)
 	
-	if x>0:
-		if t<=tau:
-			traj_WF.append(tabx)
-			tps_fix_WF.append(t)
-			t_label.append(tps)
+	gamma=random.gamma(n,1.0/n)
 
+	exp=-math.log(random.random())/n
+	
+	if x>0 and gamma<=x<=(gamma+exp):
+		traj_BD.append(tabx)
+			
 
 #
 #Mean trajectory over time
 #
 
-for j in range(len(traj_WF)):
-	traj_WF[j]=traj_WF[j]+[1]*(int(tau/dt)-len(traj_WF[j]))
-	
-avg_WF=[float(sum(col))/len(col) for col in zip(*traj_WF)]	
+avg_BD=[float(sum(col))/len(col) for col in zip(*traj_BD)]
 
-with open(path,"w") as file_WF:
-	for i in xrange(len(avg_WF)):
-		file_WF.write(str(i*dt)+'\t'+str(avg_WF[i])+'\n')
+with open(path,"w") as file_BD:
+	for i in xrange(len(avg_BD)):
+		file_BD.write(str(i*dt)+'\t'+str(avg_BD[i])+'\n')
