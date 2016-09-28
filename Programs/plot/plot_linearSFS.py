@@ -66,36 +66,42 @@ with open(sys.argv[1],"r") as file_params:
 	for line in file_params:
 		list=line.split('=')
 			
-		if list[0][:8]=='SFS_path':
-			SFS_path=re.sub(r'"','',(str(list[1][:-1]).strip()))
-		"""
-		elif list[0][:8]=='factor':
-			factor=float(list[1])
-		
-		elif list[0][:11]=='graph':
-			graph=re.sub(r'"','',(list[1][:-1].strip()))
-		"""	
+		if list[0][:8]=='lin_path':
+			lin_path=re.sub(r'"','',(str(list[1][:-1]).strip()))
+
+		elif list[0][:8]=='swp_path':
+			swp_path=re.sub(r'"','',(str(list[1][:-1]).strip()))
 			
 for rep in [1000,10000,100000]:
 
-	mean_sfs=[]
+	mean_sfs_lin=[]
 
-	with open(SFS_path+"mean_linearSFS_"+str(rep),"r") as file_sfs:
-		for ligne in file_sfs:
-			mean_sfs.append(float(ligne.split('\t')[1][:-1]))
+	with open(lin_path+"mean_linearSFS_"+str(rep),"r") as file_lin:
+		for ligne in file_lin:
+			mean_sfs_lin.append(float(ligne.split('\t')[1][:-1]))
 	
-	n=len(mean_sfs)
+	n=len(mean_sfs)+1
 	
+	sfs_swp=[]
+
+	with open(swp_path+"example_swp_SFS_linear_"+str(rep),"r") as file_swp:
+		for ligne in file_swp:
+			sfs_swp.append(float(ligne[:-1]))
+			
 	#Transformation Kingman
-	mean_sfs_t=[]
-	for i in xrange(1,n+1):
-		mean_sfs_t.append(float(mean_sfs[i-1])*i)
-	mean_sfs_t_n=[float(y)/sum(mean_sfs_t) for y in mean_sfs_t]
+	for i in xrange(1,n):
+		mean_sfs_lin[i-1]=float(mean_sfs_lin[i-1])*i
+		sfs_swp[i-1]=float(sfs_swp[i-1])*i
+		
+	#Normalization
+	mean_sfs_lin_norm=[float(y)/(sum(mean_sfs_lin)) for y in mean_sfs_lin]
+	sfs_swp_norm=[float(y)/(sum(sfs_swp)) for y in sfs_swp
 	
-	x=[float(i)/(n+1) for i in range(1,n+1)]
+	x=[float(i)/(n) for i in range(1,n)]
 
 	plt.figure(1)
 	plt.plot(x,mean_sfs_t_n,color=couleurs[c],label="Mean SFS, R = "+str(rep),linewidth=1.5)
+	plt.plot(x,sfs_swp_norm,'.',color=couleurs[c],label="SFS stairway plot, R = "+str(rep),markersize=4,markevery=2)
 
 	c+=1
 	

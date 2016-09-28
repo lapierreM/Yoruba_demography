@@ -14,3 +14,9 @@ This folder contains examples of output files for the programs.
 - `example_LinearSFS_fitting.txt`: output of the `Linear_fitting.py` program. Contains the parameter values (number of loci, sample size, foundation time, number of replicates for SFS simulation, epsilon for derivative calculation and stop threashhold), followed by the normalized simulated SFS, and the step values of the optimization (for each step: current value of the parameter t, and value of the step made just before).
 
 - `example_swp_SFS_YRI`: output of the `simSFS` program run with the option -S on the stairway plot output summary file for the Yoruba population (`Data/YRI_start2_200files_summary`). Expected SFS under the demography reconstructed by the Stairway Plot method for the Yoruba population.
+
+- `example_swp_SFS_linear_1000`: output of the `simSFS` program run with the option -S on the stairway plot output summary file for the linear demography inference (`Data/Linear_1000_200files_summary`). Expected SFS under the demography reconstructed by the Stairway Plot method for the Linear SFS simulated with 1000 loci.
+
+- `example_swp_SFS_linear_10000`: same with 10000 loci for the SFS simulation
+
+- `example_swp_SFS_linear_100000`: same with 100000 loci for the SFS simulation

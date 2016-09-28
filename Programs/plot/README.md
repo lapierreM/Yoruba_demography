@@ -1,6 +1,6 @@
 This folder contains the programs to reproduce the figures.
 
-`plot_SFS_fitting.py`: plot the fitting of the five models, i.e. the least square distance d as a function of the parameter t value. (Figure 2A)
+`plot_SFS_fitting.py`: plot the fitting of the five models, i.e. the least square distance d as a function of the parameter t value. (Figure 3A)
 
 * command line: `python plot_SFS_fitting.py plot_SFS_fitting_parameters.py`
 
@@ -10,7 +10,7 @@ This folder contains the programs to reproduce the figures.
 
 ***
 
-`plot_bestfit_SFS.py`: plot the bestfit SFS under each model with the observed SFS. (Figure 2B)
+`plot_bestfit_SFS.py`: plot the bestfit SFS under each model with the observed SFS. (Figure 3B)
 
 * command line: `python plot_bestfit_SFS.py plot_bestfit_SFS_parameters.py`
 
@@ -20,7 +20,7 @@ This folder contains the programs to reproduce the figures.
 
 ***
 
-`plot_demographies.py`: plot the inferred demographies under the five models. (Figure 3)
+`plot_demographies.py`: plot the inferred demographies under the five models. (Figure 2)
 
 * command line: `python plot_demographies.py plot_demographies_parameters.py`
 
@@ -50,7 +50,7 @@ This folder contains the programs to reproduce the figures.
 
 ***
 
-`plot_linearSFS.py`: plot the SFS simulated under the Linear growth model, with different number of loci. (Figure 5A)
+`plot_linearSFS.py`: plot the SFS simulated under the Linear growth model, with different number of loci, and the expected SFS under the demography reconstructed by the stairway plot method. (Figure 5A)
 
 * command line: `python plot_linearSFS.py plot_linearSFS_parameters.py`
 
