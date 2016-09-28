@@ -48,19 +48,15 @@ with open(sys.argv[1],"r") as file_params:
 		elif list[0][:12]=='bestfit_file':
 			bestfit_file=re.sub(r'"','',(str(list[1][:-1]).strip()))
 			
+		elif list[0][:8]=='swp_file':
+			swp_file=re.sub(r'"','',(str(list[1][:-1]).strip()))
+			
 		elif list[0][:11]=='sample_size':
 			n=int(list[1])
 			
 		elif list[0][:11]=='figure_name':
 			figure_name=re.sub(r'"','',(list[1][:-1].strip()))
 			
-t=[]
-BD=[]
-lK=[]
-cK=[]
-bnK=[]
-eK=[]
-
 #
 #plot parameters and colors
 #
@@ -84,8 +80,6 @@ with open(sfs_file,"r") as filedata:
 
 sfs_norm=[float(x)/(sum(sfs)-sfs[0]) for x in sfs]
 
-x=[]
-obs=[]
 kgm=[]
 BD=[]
 lK=[]
@@ -97,8 +91,6 @@ with open(bestfit_file,"r") as file_bestfit:
 	for ligne in file_bestfit:
 		liste=re.split(' |\n',ligne)
 		if ligne[0]!='i' and len(liste)==9:
-			x.append(liste[0])
-			obs.append(liste[1])
 			kgm.append(liste[2])
 			BD.append(liste[3])
 			lK.append(liste[4])
@@ -111,7 +103,6 @@ with open(bestfit_file,"r") as file_bestfit:
 #
 for i in xrange((1+clear),n/2):
 	
-	obs[i-1-clear]=float(obs[i-1-clear])*((i)*(n-i)/(n+0.0))
 	kgm[i-1-clear]=float(kgm[i-1-clear])*((i)*(n-i)/(n+0.0))
 	BD[i-1-clear]=float(BD[i-1-clear])*((i)*(n-i)/(n+0.0))
 	lK[i-1-clear]=float(lK[i-1-clear])*((i)*(n-i)/(n+0.0))
@@ -124,8 +115,6 @@ for i in xrange(1,n/2):
 	
 sfs_norm[(n/2)-1]=float(sfs_norm[(n/2)-1])*(n/2)
 	
-
-obs[(n/2)-1-clear]=float(obs[(n/2)-1-clear])*(n/2)
 kgm[(n/2)-1-clear]=float(kgm[(n/2)-1-clear])*(n/2)
 BD[(n/2)-1-clear]=float(BD[(n/2)-1-clear])*(n/2)
 lK[(n/2)-1-clear]=float(lK[(n/2)-1-clear])*(n/2)
@@ -137,14 +126,41 @@ eK[(n/2)-1-clear]=float(eK[(n/2)-1-clear])*(n/2)
 #Normalize
 #
 sfs_norm=[float(y)/(sum(sfs_norm)-sfs_norm[0]) for y in sfs_norm]
-obs=[float(y)/sum(obs) for y in obs]
 kgm=[float(y)/sum(kgm) for y in kgm]
 BD=[float(y)/sum(BD) for y in BD]
 lK=[float(y)/sum(lK) for y in lK]
 cK=[float(y)/sum(cK) for y in cK]
 bnK=[float(y)/sum(bnK) for y in bnK]
 eK=[float(y)/sum(eK) for y in eK]
-	
+
+#
+#Get stairway plot SFS
+#
+
+swp=[]
+
+with open(swp_file,"r") as file_swp:
+	for ligne in file_swp:
+		swp.append(float(ligne[:-1]))
+
+#Fold
+swp_plie=[]
+for i in xrange(n-1):
+	swp_plie.append(swp[i]+swp[2*n-i-2])
+swp_plie.append(swp[n-1])
+
+swp_plie=swp_plie[clear:]
+
+#transform
+
+for i in xrange(1+clear,n):
+	swp_plie[i-1-clear]=float(swp_plie[i-1-clear])*((i)*(2*n-i)/(2*n+0.0))
+
+swp_plie[n-1-clear]=float(swp_plie[n-1-clear])*(n)
+
+#normalize
+swp_norm=[float(y)/(sum(swp_plie)) for y in swp_plie]
+
 plt.figure(1)
 
 FontProperties().set_family('sans-serif')
@@ -159,6 +175,7 @@ plt.plot(x,lK,color=vert,label="Linear Kingman",linewidth=1.5)
 plt.plot(x,cK,color=bleu,label="Conditionned Kingman",linewidth=1.5)
 plt.plot(x,bnK,color=violet,label="Bottleneck Kingman",linewidth=1.5)
 plt.plot(x,eK,color=jaune,label="Exponential Kingman",linewidth=1.5)
+plt.plot(x,swp_norm,'.',color=marron,label="Stairway plot",markersize=6)
 
 plt.xlim([0,0.51])
 
