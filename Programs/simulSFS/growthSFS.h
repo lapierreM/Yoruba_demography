@@ -29,12 +29,16 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <string.h>
+#include <unistd.h>
 
-void Kingman(int nRep, int taillePop);
-void conditionned_Kingman(double tFond, int nRep, int taillePop);
-void sudden_Kingman(double tFond, int nRep, int taillePop);
-void growth_Kingman(char croissance, double tFond, int nRep, int taillePop);
-void sim_SFS(double *t_k, double **P_i_k, int taillePop);
-void fill_P_i_k(double **P_i_k, int taillePop);
+void Kingman(int nRep, int nsamp);
+void conditionned_Kingman(double tFond, int nRep, int nsamp);
+void sudden_Kingman(double tFond, int nRep, int nsamp);
+void growth_Kingman(char croissance, double tFond, int nRep, int nsamp);
+void sim_SFS(double *t_k, double **P_i_k, int nsamp);
+void fill_P_i_k(double **P_i_k, int nsamp);
+void stairway_demo(char * filename_SwP, int nRep, int nsamp);
+int read_StairwayPlot(char * filename, double **Time, double **Size);
 
 #endif /* growthSFS_h */

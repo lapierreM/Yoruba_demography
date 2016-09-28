@@ -24,27 +24,95 @@
 
 #include "growthSFS.h"
 
+void usage(char *prog){
+    
+    fprintf(stderr, "usage is '%s [options] nsamp nrep\n", prog);
+    fprintf(stderr, "[options] are:\n");
+    fprintf(stderr, "\t-x  #  : set seed to # (for random generator\n");
+    fprintf(stderr, "\t-S xxx : read input demography from StairwayPlot output file xx\n");
+    fprintf(stderr, "\t-c #.# : Kingman with Tmrca < #.#\n");
+    fprintf(stderr, "\t-e #.# : Exp with rate #.#\n");
+    fprintf(stderr, "\t-l #.# : Linear with foundation time #.#\n");
+    fprintf(stderr, "\t-s #.# : Sudden growth at time #.#\n");
+    
+}
 
-int main(int argc, const char * argv[]) {
+
+int main(int argc,  char * argv[]) {
     
-    srand((unsigned int) time(NULL)); //initialization of the random numbers generator
+    extern char *optarg;
+    extern int optind;
+    int o;
     
-    char croissance;
-    croissance=argv[1][0];
-    int taillePop;
-    taillePop=atoi(argv[2]);
-    double tFond;
-    tFond=atof(argv[3]);
-    int nRep;
-    nRep=atoi(argv[4]);
+    int opt_demo='k';
     
-    if (croissance=='k')
-        Kingman(nRep,taillePop);
-    else if (croissance=='c')
-        conditionned_Kingman(tFond, nRep, taillePop);
-    else if (croissance=='s')
-        sudden_Kingman(tFond, nRep, taillePop);
-    else
-        growth_Kingman(croissance, tFond, nRep, taillePop);
+    long seed=time(NULL);
+    char *filename_SLP=NULL;
+    int verbose=0;
+    double tFond=0;
+    
+    if(argc < 3)
+        usage(argv[0]),exit(1);
+    
+    while ( (o=getopt(argc, argv, "x:S:vc:e:s:l:")) != -1  ){
+    
+        switch(o){
+        
+            case 'x':
+                seed=atol(optarg);
+                break;
+                
+            case 'S':
+                filename_SLP=optarg;
+                opt_demo='S';
+                break;
+                
+            case 'v':
+                verbose=1;
+                break;
+                
+            case 'c':
+            case 'e':
+            case 's':
+            case 'l':
+                opt_demo=(char)o;
+                tFond=atof(optarg);
+                break;
+       }
+    }
+    
+    srand((unsigned int) seed); //initialization of the random numbers generator
+    
+    int nsamp=atoi(argv[optind]);
+    int nRep=atoi(argv[optind+1]);
+    
+    switch(opt_demo){
+            
+            case 'k':
+                Kingman(nRep,nsamp);
+                break;
+            
+            case 'e':
+                growth_Kingman('e', tFond, nRep, nsamp);
+                break;
+            
+            case 'c':
+                conditionned_Kingman(tFond, nRep, nsamp);
+                break;
+            
+            case 'l':
+                growth_Kingman('l', tFond, nRep, nsamp);
+                break;
+            
+            case 's':
+                sudden_Kingman(tFond, nRep, nsamp);
+                break;
+            
+            case 'S':
+                stairway_demo(filename_SLP, nRep, nsamp);
+                break;
+            
+    }
+
     return 0;
 }
