@@ -11,9 +11,9 @@ where :
   - `-l float`: Linear model (linear growth with foundation time float)
   - `-S file`: read input demography grom stairway plot output summary file
 
-- sample_size is the sample size of the simulated SFS
+- `sample_size` is the sample size of the simulated SFS
 
-- number_rep is the number of repetitions for the mean SFS computation
+- `number_rep` is the number of repetitions for the mean SFS computation
 
 Output: list (one value per line), simulated SFS
 
