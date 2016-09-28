@@ -70,6 +70,9 @@ def plot_Stairwayplot(file, factor, graph):
 	#
 	minorLocator = MultipleLocator(10000)
 	gris=(127/255.0,127/255.0,127/255.0)
+	
+	marron=(147/255.0,73/255.0,21/255.0)
+	marron_clair=(231/255.0,218/255.0,208/255.0)
 
 	plt.figure(1)
 	
@@ -77,12 +80,11 @@ def plot_Stairwayplot(file, factor, graph):
 		plt.grid(which='both',linestyle='-',linewidth=0.5,color='0.75')
 		
 		plt.plot(year_rescaled,Ne_rescaled,color=gris,linewidth=2,label=file.split('/')[-1])
-		plt.plot(year_rescaled,Ne_2_5_rescaled,'k')
-		plt.plot(year_rescaled,Ne__97_5_rescaled,'k')
+		plt.fill_between(year_rescaled, Ne_2_5_rescaled, Ne__97_5_rescaled, color=marron_clair)
 
-	
-		#plt.xlim(0,700000) # if x axis scale needs to be precised
-	
+		plt.xlim(0,160000) #if zoom
+		plt.ylim(0,140000)  #if zoom
+		
 		plt.xlabel("year")
 		plt.ylabel("Ne")
 		
