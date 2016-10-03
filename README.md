@@ -1,6 +1,6 @@
 # Yoruba_demography
 
-This folder contains the data and programs necessary to reproduce the results of the article "Accuracy of demographic inferences from Site Frequency Spectrum= The case of the Yoruba population" (Lapierre et al. 2016).
+This folder contains the data and programs necessary to reproduce the results of the article "Accuracy of demographic inferences from Site Frequency Spectrum: The case of the Yoruba population" (Lapierre et al. 2016).
 
 - `Data`: Data (Site Frequency Spectrum, Stairway plot outputs) necessary for the study
 - `Output`: Examples of output files for the programs
