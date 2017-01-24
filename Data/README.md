@@ -9,3 +9,4 @@ This folder contains data necessary for the study.
 - `mean_linearSFS_1000`: mean of 200 SFS simulated under the linear growth model (time of foundation = 2.48) with 1000 loci
 - `mean_linearSFS_10000`: same with 10000 loci for the SFS simulations
 - `mean_linearSFS_100000`: same with 100000 loci for the SFS simulations
+- `YRI.fs`: the folded SFS of the Yoruba population, in the format compatible with the dadi software (Gutenkunst et al. 2009, see their manual for details)
